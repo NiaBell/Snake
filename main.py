@@ -1,6 +1,6 @@
 from turtle import Screen, Turtle
 
-import scoreboard
+
 from Snake import Snake
 import time
 from food import Food
@@ -42,14 +42,16 @@ while game_is_on:
    #detect collision with wall
 
    if snake.head.xcor()>280 or snake.head.xcor()<-280 or snake.head.ycor()>280 or snake.head.ycor()<-280:
-      scoreboard.game_over()
-      game_is_on=False
+      scoreboard.reset()
+      snake.reset()
+
 
    #detect collision with tail
       #trigger game over
 
    for segment in snake.segments[1:]:
       if snake.head.distance(segment)<15:
-         game_is_on=False
-         scoreboard.game_over()
+         scoreboard.reset()
+         snake.reset()
+
 screen.exitonclick()
